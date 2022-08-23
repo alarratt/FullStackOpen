@@ -1,4 +1,11 @@
-import logo from './logo.svg';
+const App = () => (
+  <div>
+    <p>Hello World</p>
+  </div>
+)
+export default App
+
+/*import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -23,3 +30,4 @@ function App() {
 }
 
 export default App;
+*/
