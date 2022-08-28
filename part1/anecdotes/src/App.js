@@ -1,6 +1,5 @@
 
 import { useState } from 'react'
-const votes = [0,0,0,0,0,0,0]
 const Text = ({anecdote, vote}) => {
   return(
     <div>
@@ -21,25 +20,26 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
   ]
   const [selected, setSelected] = useState(0)
-  const [vote, setVote] = useState([])
+  const [vote, setVote] = useState([0,0,0,0,0,0,0])
   const generateRand = () => {
     return(
     Math.floor(Math.random()*7)
     )
   }
   const voteFor = (selected) => {
-    console.log (votes)
-    return(
+    let votes = [...vote]
     votes[selected] = votes[selected]+1
+    return(
+      votes
     )
   }
   return(
     <div>
-      <Text anecdote = {anecdotes[selected]} vote = {vote} />
+      <Text anecdote = {anecdotes[selected]} vote = {vote[selected]} />
       <div><button onClick = {()=>setSelected(generateRand)}>Next anecdote </button></div>
       <div><button onClick = {()=>setVote(voteFor(selected))}>Vote</button></div>
       <h1>Anecdote with the most votes</h1>
-      <p>{anecdotes[votes.indexOf(Math.max(...votes))]}</p>
+      <p>{anecdotes[vote.indexOf(Math.max(...vote))]}</p>
     </div>
   )
 }
